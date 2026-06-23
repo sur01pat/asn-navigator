@@ -1,0 +1,35 @@
+{
+  "AI Solutions Architect": [
+    "Python",
+    "Prompt Engineering",
+    "RAG",
+    "Vector Databases",
+    "LLMs",
+    "MLOps",
+    "Agentic AI",
+    "AWS"
+  ],
+
+  "Agentic AI Architect": [
+    "Python",
+    "Agentic AI",
+    "LangChain",
+    "CrewAI",
+    "AutoGen",
+    "RAG",
+    "Vector Databases",
+    "Prompt Engineering",
+    "MLOps",
+    "AWS",
+    "Vertex AI",
+    "AI Governance"
+  ],
+
+  "Cloud Architect": [
+    "AWS",
+    "Terraform",
+    "Kubernetes",
+    "DevSecOps",
+    "Networking"
+  ]
+}
