@@ -655,10 +655,10 @@ Return ONLY valid JSON.
   }
 }
 
+
 export async function gapAnalysis(
   userId: string
 ) {
-
   console.log(
     "================================"
   );
@@ -687,22 +687,24 @@ export async function gapAnalysis(
       .limit(1)
       .get();
 
+  let targetRole =
+    "Agentic AI Architect";
+
   if (profileSnapshot.empty) {
 
-    console.error(
-      "Profile not found"
+    console.log(
+      "Profile not found. Using defaults."
     );
 
-    throw new Error(
-      "Profile not found"
-    );
+  } else {
+
+    const profile =
+      profileSnapshot.docs[0].data();
+
+    targetRole =
+      profile?.targetRole ||
+      "Agentic AI Architect";
   }
-
-  const profile =
-    profileSnapshot.docs[0].data();
-
-  const targetRole =
-    profile?.targetRole;
 
   console.log(
     "Target Role:",
@@ -865,3 +867,4 @@ export async function gapAnalysis(
 
   return result;
 }
+

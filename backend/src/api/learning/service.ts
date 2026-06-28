@@ -5,25 +5,52 @@ export async function generateRoadmap(
   userId: string
 ) {
 
-  // -------------------------
-  // Profile
-  // -------------------------
+  
+// -------------------------
+// Profile
+// -------------------------
 
-  const profileSnapshot =
-    await db
-      .collection("profiles")
-      .where("userId", "==", userId)
-      .limit(1)
-      .get();
+const profileSnapshot =
+  await db
+    .collection("profiles")
+    .where("userId", "==", userId)
+    .limit(1)
+    .get();
 
-  if (profileSnapshot.empty) {
-    throw new Error(
-      "Profile not found"
-    );
-  }
+let profile = {
+  targetRole:
+    "Agentic AI Architect",
+  learningHoursPerWeek: 10,
+};
 
-  const profile =
+if (profileSnapshot.empty) {
+
+  console.log(
+    "Profile not found. Using defaults."
+  );
+
+} else {
+
+  const savedProfile =
     profileSnapshot.docs[0].data();
+
+  profile = {
+    targetRole:
+      savedProfile?.targetRole ||
+      "Agentic AI Architect",
+
+    learningHoursPerWeek:
+      savedProfile?.learningHoursPerWeek ||
+      10,
+  };
+}
+
+console.log(
+  "Roadmap Profile:",
+  profile
+);
+
+
 
   // -------------------------
   // Latest Skill Gap

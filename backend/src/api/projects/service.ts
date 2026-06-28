@@ -9,21 +9,41 @@ export async function generateProjects(
   // Profile
   // -------------------------
 
-  const profileSnapshot =
-    await db
-      .collection("profiles")
-      .where("userId", "==", userId)
-      .limit(1)
-      .get();
+const profileSnapshot =
+  await db
+    .collection("profiles")
+    .where("userId", "==", userId)
+    .limit(1)
+    .get();
 
-  if (profileSnapshot.empty) {
-    throw new Error(
-      "Profile not found"
-    );
-  }
+let profile = {
+  targetRole:
+    "Agentic AI Architect",
+};
 
-  const profile =
+if (profileSnapshot.empty) {
+
+  console.log(
+    "Profile not found. Using defaults."
+  );
+
+} else {
+
+  const savedProfile =
     profileSnapshot.docs[0].data();
+
+  profile = {
+    targetRole:
+      savedProfile?.targetRole ||
+      "Agentic AI Architect",
+  };
+}
+
+console.log(
+  "Projects Profile:",
+  profile
+);
+
 
   // -------------------------
   // Skill Gap Analysis

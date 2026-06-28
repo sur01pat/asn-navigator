@@ -11,6 +11,7 @@ import projectsRoutes from "./api/projects/routes";
 
 import dashboardRoutes from "./api/dashboard/routes";
 import careerRoutes from "./api/career/routes";
+import projectProgressRoutes from "./api/project-progress/routes";
 
 const app = express();
 
@@ -51,6 +52,10 @@ app.use(
 app.use(
   "/api/career",
   careerRoutes
+);
+app.use(
+  "/api/project-progress",
+  projectProgressRoutes
 );
 app.get("/health", (_, res) => {
   res.json({

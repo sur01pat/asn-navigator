@@ -9,7 +9,10 @@ import {
 export async function getDashboard(
   userId: string
 ) {
-
+console.log(
+  "Dashboard userId:",
+  userId
+);
   // Profile
 
   const profileSnapshot =
@@ -23,7 +26,10 @@ export async function getDashboard(
     profileSnapshot.empty
       ? null
       : profileSnapshot.docs[0].data();
-
+console.log(
+  "Profile docs:",
+  profileSnapshot.size
+);
   // Assessment
 
   const assessmentSnapshot =
@@ -37,7 +43,10 @@ export async function getDashboard(
     assessmentSnapshot.empty
       ? null
       : assessmentSnapshot.docs[0].data();
-
+console.log(
+  "Assessment docs:",
+  assessmentSnapshot.size
+);
   // Skill Gap
 
   const gapSnapshot =
@@ -51,7 +60,10 @@ export async function getDashboard(
     gapSnapshot.empty
       ? null
       : gapSnapshot.docs[0].data();
-
+console.log(
+  "Assessment docs:",
+  assessmentSnapshot.size
+);
   // Roadmap
 
   const roadmapSnapshot =
@@ -65,7 +77,10 @@ export async function getDashboard(
     roadmapSnapshot.empty
       ? null
       : roadmapSnapshot.docs[0].data();
-
+console.log(
+  "Assessment docs:",
+  assessmentSnapshot.size
+);
   // Projects
 
   const projectSnapshot =
@@ -79,7 +94,10 @@ export async function getDashboard(
     projectSnapshot.empty
       ? null
       : projectSnapshot.docs[0].data();
-
+console.log(
+  "Assessment docs:",
+  assessmentSnapshot.size
+);
   
 const currentSkills =
   assessment?.skills || [];
